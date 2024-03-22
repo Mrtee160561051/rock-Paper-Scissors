@@ -1,4 +1,4 @@
-const buttons = document.querySelectorAll(".gamebtn");
+const images = document.querySelectorAll(".game_btn");
 const startBtn= document.getElementById("start_btn");
 const rockBtn= document.getElementById("rock_btn");
 const paperBtn= document.getElementById("paper_btn");
@@ -8,25 +8,33 @@ const playerScore= document.getElementById("playerScore");
 const result = document.getElementById("output");
 
 startBtn.addEventListener("click",()=>location.reload())
+
 const score ={
 computer:0,
    player:0,
 }
  playerScore.textContent = 0;
  comScore.textContent =0;
+ 
+images.forEach(item =>item.addEventListener("click",()=>imageFn(item.id)))
 
-if((score.computer + score.player) === 5){
-   alert("Congratulation you won the game!")
+const imageFn = (id)=>
+{
+ if (score.player < 5 && score.computer < 5) {
+   let val;
+   if(id==="rock_btn"){
+     val="rock"
+   }else if(id==="paper_btn"){
+     val="paper"
+   }else if(id==="scissors_btn"){
+     val="scissors"
+   }
+   
+result.textContent= comparison(val)
+}else{
+   return ;
 }
-rockBtn.addEventListener("click",()=>{
-   result.textContent= `${comparison("rock")}`
-})
-paperBtn.addEventListener("click",()=>{
-   result.textContent= `${comparison("paper")}`
-})
-scissorsBtn.addEventListener("click",()=>{
-   result.textContent= `${comparison("scissors")}`
-})
+}
 
 
 function getComputerChoice (){
@@ -38,11 +46,9 @@ function checkGameEnd() {
    setTimeout(() => {
       if(playerScore.textContent === "5" || comScore.textContent === "5") {
          (score.player > score.computer) ?
-         alert("Congratulations you win the game!") :
+         alert("Congratulations you won the game!") :
          alert("You lost the game!");
-         buttons.forEach(button => {
-            button.disabled = true;
-        });
+         
       }
    }, 1); 
 }
