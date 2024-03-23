@@ -47,10 +47,10 @@ function checkGameEnd() {
       if(playerScore.textContent === "5" || comScore.textContent === "5") {
         if (score.player > score.computer){
          startBtn.style.display = "block";
-         alert("Congratulations you won the game!, press the restart button")}
+         alert("Congratulations you won the game! press the restart button")}
          else{
          startBtn.style.display = "block";
-         alert("You lost the game!, press the restart button")
+         alert("You lost the game! press the restart button")
          }   
       }
    }, 1); 
@@ -62,17 +62,17 @@ const comparison =(val)=>{
    
    const computer= getComputerChoice();
    if(computer=== val){
-      return `It a tie! Computer choose ${computer}`;
+      return `It a tie! Computer choose "${computer}" and you choose "${val}"`;
    }else if((val=== "rock" && computer==="scissors") ||
    (val=== "paper" && computer==="rock") ||
    (val=== "scissors" && computer==="paper")){
       score[1]= ++score.player
       playerScore.textContent = score[1]
-      return `you Win! Computer choose ${computer} and you choose ${val}`;
+      return `you Win! Computer choose "${computer}" and you choose "${val}"`;
    }else{
       score[0] = ++score.computer
       comScore.textContent = score[0]
-      return `you lose! Computer choose ${computer} and you choose ${val}`;
+      return `you lose! Computer choose "${computer}" and you choose "${val}"`;
    }
   }
   
