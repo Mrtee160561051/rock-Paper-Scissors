@@ -45,11 +45,13 @@ function getComputerChoice (){
 function checkGameEnd() {
    setTimeout(() => {
       if(playerScore.textContent === "5" || comScore.textContent === "5") {
-         (score.player > score.computer) ?
-         alert("Congratulations you won the game!, press the restart button") :
-         alert("You lost the game!, press the restart button")
+        if (score.player > score.computer){
          startBtn.style.display = "block";
-         
+         alert("Congratulations you won the game!, press the restart button")}
+         else{
+         startBtn.style.display = "block";
+         alert("You lost the game!, press the restart button")
+         }   
       }
    }, 1); 
 }
@@ -66,11 +68,11 @@ const comparison =(val)=>{
    (val=== "scissors" && computer==="paper")){
       score[1]= ++score.player
       playerScore.textContent = score[1]
-      return `you Win! Computer choose ${computer}`;
+      return `you Win! Computer choose ${computer} and you choose ${val}`;
    }else{
       score[0] = ++score.computer
       comScore.textContent = score[0]
-      return `you lose! Computer choose ${computer}`;
+      return `you lose! Computer choose ${computer} and you choose ${val}`;
    }
   }
   
