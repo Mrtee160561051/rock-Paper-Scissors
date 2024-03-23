@@ -46,8 +46,9 @@ function checkGameEnd() {
    setTimeout(() => {
       if(playerScore.textContent === "5" || comScore.textContent === "5") {
          (score.player > score.computer) ?
-         alert("Congratulations you won the game!") :
-         alert("You lost the game!");
+         alert("Congratulations you won the game!, press the restart button") :
+         alert("You lost the game!, press the restart button")
+         startBtn.style.display = "block";
          
       }
    }, 1); 
